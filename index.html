@@ -10,7 +10,7 @@
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <!-- Fontawesome CDN -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-
+  <!-- jQuery-UI -->
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="./assets/css/style.css">
@@ -35,8 +35,9 @@
             <div class="input-group mb-3">
               <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa fa-search"></i></span>
               <input type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" id="citySearch">
-              <button type="button" name="" class="btn btn-primary btn-sm btn-block">Search</button>
+                aria-describedby="inputGroup-sizing-default" id="citySearch" placeholder="Montego Bay">
+              <button type="button" name="searchButton" class="btn btn-secondary btn-sm btn-block"
+                id="searchButton">Search</button>
             </div>
           </div>
         </div>
@@ -44,13 +45,9 @@
           <div class="row">
             <div class="col">
               <div class="list-group" id="history">
-                <!-- <ul>
-                  <li><button>London</button></li>
-                  <li><button>New York</button></li>
-                  <li><button>Lisbon</button></li>
-                  <li><button>Miami</button></li>
-                  <li><button>Montego Bay</button></li>
-                </ul> -->
+                <h2 id="recent-heading" class="mt-1 h3 form-label fs-5">
+                  Recent Searches:
+                </h2>
                 <div class="d-grid gap-2">
                   <button type="button" class="btn btn-secondary">London</button>
                   <button type="button" class="btn btn-secondary">New York</button>
@@ -162,7 +159,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="./assets/js/jquery.csv.js"></script>
+  <!-- jQuery-UI -->
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
   <!-- Script -->
   <script src="./assets/js/script.js" type="module"></script>

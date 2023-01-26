@@ -23,8 +23,19 @@ const queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appi
 //console.log(mycities);
 
 $(function () {
-    const availableCities = $.csv.toArray(cities);
+    // Adds autocomplete to search box
     $("#citySearch").autocomplete({
-        source: availableCities
+        source: cities
     });
+    // Gets value from search box when enter key pressed
+    $("#citySearch").keypress(function (event) {
+        if (event.keyCode === 13) {
+            console.log($("#citySearch").val());
+        }
+    });
+    // Gets value from search box when search button clicked
+    $("#searchButton").on('click', function () {
+        console.log($("#citySearch").val());
+    });
+
 });
