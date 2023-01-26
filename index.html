@@ -32,12 +32,17 @@
               Search for a City:
             </h2>
 
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa fa-search"></i></span>
-              <input type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" id="citySearch" placeholder="Montego Bay">
-              <button type="button" name="searchButton" class="btn btn-secondary btn-sm btn-block"
-                id="searchButton">Search</button>
+            <div class="input-group-search mb-3">
+              <!-- <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa fa-search"></i></span> -->
+              <input type="text" class="form-control mb-3" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" id="citySearch" placeholder="Search">
+              <div class="searchButtons d-flex justify-content-center">
+                <button type="button" name="searchButton" class="btn btn-secondary btn-sm btn-block m-1"
+                  id="searchButton"><i class="fa fa-search"></i> Search</button>
+                <button type="button" name="randomCity" class="btn btn-secondary btn-sm btn-block m-1"
+                  id="randomCity">Random
+                  City</button>
+              </div>
             </div>
           </div>
         </div>
@@ -48,8 +53,10 @@
                 <h2 id="recent-heading" class="mt-1 h3 form-label fs-5">
                   Recent Searches:
                 </h2>
+
                 <div class="d-grid gap-2">
-                  <button type="button" class="btn btn-secondary">London</button>
+                  <button type="button" class="btn btn-secondary d-flex justify-content-between">London<span
+                      class="fa fa-times"></span></button>
                   <button type="button" class="btn btn-secondary">New York</button>
                   <button type="button" class="btn btn-secondary">Chicago</button>
                   <button type="button" class="btn btn-secondary">Madrid</button>
