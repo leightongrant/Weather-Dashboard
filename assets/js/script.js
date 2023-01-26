@@ -1,3 +1,5 @@
+import { cities } from "./cities.js";
+
 const myApiKey = '9270527dd2d838bcebaf2aaf5a875cff';
 const city = 'London';
 const queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${myApiKey}&units='metric'`;
@@ -14,3 +16,15 @@ const queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appi
 //     .then(response => response.json())
 //     .then(response => console.log(response))
 //     .catch(err => console.error(err));
+
+//var cities = reader.readAsText('./assests/csv/test.txt');
+
+
+//console.log(mycities);
+
+$(function () {
+    const availableCities = $.csv.toArray(cities);
+    $("#citySearch").autocomplete({
+        source: availableCities
+    });
+});
