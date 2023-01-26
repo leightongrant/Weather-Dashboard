@@ -48,6 +48,33 @@ $(function () { // Document ready
     });
 
 
+    // Loop through array and construct element with data
+    forecast.forEach((day) => {
+        // Create elements to display data
+        let elements = '';
+        elements = `<div class="col">`;
+        elements += `<div class="p-3 border bg-light test-2">`;
+        elements += `<p class="date fs-6 fw-bold">${moment(day.date).format('ddd Do MMM, YYYY')}</p>`;
+        elements += `<ul class="weatherData">`;
+        elements += `<img src="http://openweathermap.org/img/w/${day.icon}.png" "alt="Weather icon"></li>`;
+        elements += `<li>Temp:  ${day.temp} &deg;C</li>`;
+        elements += `<li>Wind:  ${day.wind} KPH</li>`;
+        elements += `<li>Humidity:  ${day.humidity} %</li>`;
+        elements += `</ul></div></div>`;
+
+        // Append elements to render forecast display
+        $(elements).appendTo($('#weatherData'));
+    });
+
+    // Render todays weather
+    const today = forecast[0];
+    $('#todayIcon').html(`<img src="http://openweathermap.org/img/w/${today.icon}.png" "alt="Weather icon">`);
+    $('#todayTemp').html(`Temp:  ${today.temp} &deg;C`);
+    $('#todayWind').html(`Wind:  ${today.wind} KPH`);
+    $('#todayHumidity').html(`Humidity:  ${today.humidity} &deg;C`);
+    $('#todayDate').text(moment(today.date).format('ddd Do MMM, YYYY'));
+
+
 
 
 
