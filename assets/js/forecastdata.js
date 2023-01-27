@@ -1,4 +1,4 @@
-const apiKey = '9270527dd2d838bcebaf2aaf5a875cff';
+
 
 
 // const forecastData = {
@@ -235,10 +235,11 @@ const fetchForecast = (city = 'Montego Bay', units = 'metric', appid = '9270527d
                 // Create elements to display data
                 let elements = '';
                 elements = `<div class="col">`;
-                elements += `<div class="p-3 border bg-light test-2">`;
+                elements += `<div class="p-3 border bg-light rounded-3 state-${day.icon}">`;
                 elements += `<p class="date fs-6 fw-bold">${moment(day.date).format('ddd Do MMM, YYYY')}</p>`;
                 elements += `<ul class="weatherData">`;
-                elements += `<img src="http://openweathermap.org/img/w/${day.icon}.png" "alt="Weather icon"></li>`;
+                // elements += `<li><img src="http://openweathermap.org/img/w/${day.icon}.png" "alt="Weather icon"></li>`;
+                elements += `<li><i class='owi owi-4x owi-${day.icon}'></i></li>`;
                 elements += `<li>Temp:  ${day.temp} &deg;C</li>`;
                 elements += `<li>Wind:  ${day.wind} KPH</li>`;
                 elements += `<li>Humidity:  ${day.humidity} %</li>`;
@@ -250,8 +251,10 @@ const fetchForecast = (city = 'Montego Bay', units = 'metric', appid = '9270527d
 
             // Render todays weather
             const today = forecast[0];
+            $('.today').addClass(`state-${today.icon}`);
             $('#cityName').text(`${today.city}`);
-            $('#todayIcon').html(`<img src="http://openweathermap.org/img/w/${today.icon}.png" "alt="Weather icon">`);
+            $(`<i class="owi owi-5x owi-${today.icon}"></i>`).appendTo($('#todayIcon'));
+            // ('#todayIcon').html(`<img src="http://openweathermap.org/img/w/${today.icon}.png" "alt="Weather icon">`);
             $('#todayTemp').html(`Temp:  ${today.temp} &deg;C`);
             $('#todayWind').html(`Wind:  ${today.wind} KPH`);
             $('#todayHumidity').html(`Humidity:  ${today.humidity} &deg;C`);
