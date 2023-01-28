@@ -1,211 +1,12 @@
-// const forecastData = {
-//     "cod": "200",
-//     "message": 0,
-//     "cnt": 5,
-//     "list": [
-//         {
-//             "dt": 1674766800,
-//             "main": {
-//                 "temp": 5.06,
-//                 "feels_like": 1.7,
-//                 "temp_min": 4.91,
-//                 "temp_max": 5.06,
-//                 "pressure": 1030,
-//                 "sea_level": 1030,
-//                 "grnd_level": 1028,
-//                 "humidity": 84,
-//                 "temp_kf": 0.15
-//             },
-//             "weather": [
-//                 {
-//                     "id": 804,
-//                     "main": "Clouds",
-//                     "description": "overcast clouds",
-//                     "icon": "04n"
-//                 }
-//             ],
-//             "clouds": {
-//                 "all": 100
-//             },
-//             "wind": {
-//                 "speed": 4.42,
-//                 "deg": 8,
-//                 "gust": 9.65
-//             },
-//             "visibility": 10000,
-//             "pop": 0,
-//             "sys": {
-//                 "pod": "n"
-//             },
-//             "dt_txt": "2023-01-26 21:00:00"
-//         },
-//         {
-//             "dt": 1674777600,
-//             "main": {
-//                 "temp": 5.16,
-//                 "feels_like": 1.71,
-//                 "temp_min": 5.16,
-//                 "temp_max": 5.36,
-//                 "pressure": 1030,
-//                 "sea_level": 1030,
-//                 "grnd_level": 1027,
-//                 "humidity": 78,
-//                 "temp_kf": -0.2
-//             },
-//             "weather": [
-//                 {
-//                     "id": 804,
-//                     "main": "Clouds",
-//                     "description": "overcast clouds",
-//                     "icon": "04n"
-//                 }
-//             ],
-//             "clouds": {
-//                 "all": 99
-//             },
-//             "wind": {
-//                 "speed": 4.65,
-//                 "deg": 8,
-//                 "gust": 9.17
-//             },
-//             "visibility": 10000,
-//             "pop": 0,
-//             "sys": {
-//                 "pod": "n"
-//             },
-//             "dt_txt": "2023-01-27 00:00:00"
-//         },
-//         {
-//             "dt": 1674788400,
-//             "main": {
-//                 "temp": 5.05,
-//                 "feels_like": 1.88,
-//                 "temp_min": 5.05,
-//                 "temp_max": 5.05,
-//                 "pressure": 1029,
-//                 "sea_level": 1029,
-//                 "grnd_level": 1026,
-//                 "humidity": 74,
-//                 "temp_kf": 0
-//             },
-//             "weather": [
-//                 {
-//                     "id": 804,
-//                     "main": "Clouds",
-//                     "description": "overcast clouds",
-//                     "icon": "04n"
-//                 }
-//             ],
-//             "clouds": {
-//                 "all": 100
-//             },
-//             "wind": {
-//                 "speed": 4.07,
-//                 "deg": 5,
-//                 "gust": 9.34
-//             },
-//             "visibility": 10000,
-//             "pop": 0,
-//             "sys": {
-//                 "pod": "n"
-//             },
-//             "dt_txt": "2023-01-27 03:00:00"
-//         },
-//         {
-//             "dt": 1674799200,
-//             "main": {
-//                 "temp": 3.54,
-//                 "feels_like": -0.04,
-//                 "temp_min": 3.54,
-//                 "temp_max": 3.54,
-//                 "pressure": 1029,
-//                 "sea_level": 1029,
-//                 "grnd_level": 1026,
-//                 "humidity": 84,
-//                 "temp_kf": 0
-//             },
-//             "weather": [
-//                 {
-//                     "id": 803,
-//                     "main": "Clouds",
-//                     "description": "broken clouds",
-//                     "icon": "04n"
-//                 }
-//             ],
-//             "clouds": {
-//                 "all": 74
-//             },
-//             "wind": {
-//                 "speed": 4.17,
-//                 "deg": 14,
-//                 "gust": 11.42
-//             },
-//             "visibility": 10000,
-//             "pop": 0,
-//             "sys": {
-//                 "pod": "n"
-//             },
-//             "dt_txt": "2023-01-27 06:00:00"
-//         },
-//         {
-//             "dt": 1674810000,
-//             "main": {
-//                 "temp": 3.12,
-//                 "feels_like": 0.11,
-//                 "temp_min": 3.12,
-//                 "temp_max": 3.12,
-//                 "pressure": 1030,
-//                 "sea_level": 1030,
-//                 "grnd_level": 1027,
-//                 "humidity": 91,
-//                 "temp_kf": 0
-//             },
-//             "weather": [
-//                 {
-//                     "id": 801,
-//                     "main": "Clouds",
-//                     "description": "few clouds",
-//                     "icon": "02d"
-//                 }
-//             ],
-//             "clouds": {
-//                 "all": 17
-//             },
-//             "wind": {
-//                 "speed": 3.18,
-//                 "deg": 28,
-//                 "gust": 9.46
-//             },
-//             "visibility": 10000,
-//             "pop": 0,
-//             "sys": {
-//                 "pod": "d"
-//             },
-//             "dt_txt": "2023-01-27 09:00:00"
-//         }
-//     ],
-//     "city": {
-//         "id": 2643743,
-//         "name": "London",
-//         "coord": {
-//             "lat": 51.5085,
-//             "lon": -0.1257
-//         },
-//         "country": "GB",
-//         "population": 1000000,
-//         "timezone": 0,
-//         "sunrise": 1674719276,
-//         "sunset": 1674751062
-//     }
-// };
 // Function to format date
 const formatDate = (dt) => {
     return moment.unix(dt).format('MMM Do, YYYY');
 };
+
 // Function to fetch forecast data
-const fetchForecast = (lat = 51.5073219, lon = -0.1276474, units = 'metric', appid = '9270527dd2d838bcebaf2aaf5a875cff') => {
+const getForecast = (lat, lon, cityName, appid = '9270527dd2d838bcebaf2aaf5a875cff') => {
     let queryURL = `https://api.openweathermap.org/data/2.5/onecall?`;
-    queryURL += `lat=${lat}&lon=${lon}&units=${units}&appid=${appid}&exclude=current,minutely,hourly,alerts`;
+    queryURL += `lat=${lat}&lon=${lon}&units=metric&exclude=current,minutely,hourly,alerts&appid=${appid}`;
     console.log(queryURL);
     return fetch(queryURL)
         .then((response) => {
@@ -231,6 +32,7 @@ const fetchForecast = (lat = 51.5073219, lon = -0.1276474, units = 'metric', app
                 dailyObj.date = formatDate(d.dt);
                 dailyObj.humidity = d.humidity;
                 dailyObj.temp = d.temp.day;
+                console.log(d.temp.day);
                 dailyObj.wind = d.wind_speed;
                 dailyObj.icon = d.weather[0].icon;
                 // Stringify objects and push to array
@@ -251,7 +53,7 @@ const fetchForecast = (lat = 51.5073219, lon = -0.1276474, units = 'metric', app
                 if (day === 0) {
                     // Render todays weather
                     $('.today').addClass(`state-${fiveDayForecast[day].icon}`);
-                    //$('#cityName').text(`${fiveDayForecast[day].city}`);
+                    $('#cityName').text(`${cityName}`);
                     $('#todayIcon').html(`<i class="owi owi-5x owi-${fiveDayForecast[day].icon}"></i>`);
                     // ('#todayIcon').html(`<img src="http://openweathermap.org/img/w/${today.icon}.png" "alt="Weather icon">`);
                     $('#todayTemp').html(`Temp:  ${fiveDayForecast[day].temp} &deg;C`);
@@ -288,5 +90,33 @@ const fetchForecast = (lat = 51.5073219, lon = -0.1276474, units = 'metric', app
         });
 };
 
+// Function to get coordinates
+const renderForecast = (city = 'London', appid = 'e56b324652925293f54beb9630933db8') => {
+    // Api call to get lat and lon data from city name
+    let queryURL = `http://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(city)}&limit=5&appid=${appid}`;
+    console.log(queryURL);
+    return fetch(queryURL)
+        .then((response) => {
+            if (response.status >= 200 && response.status <= 299) {
+                return response.json();
+            } else {
+                throw Error(response.statusText);
+            }
+        })
+        .then(geo => {
+            // Get lat, lon and city name
+            const lat = geo[0].lat;
+            const lon = geo[0].lon;
+            const cityName = `${geo[0].name}, ${geo[0].country}`;
 
-export { fetchForecast };
+            // Call getForecast with lat, lon, and City Name data
+            getForecast(lat, lon, cityName, appid);
+
+        })
+        .catch(err => console.log(err));
+
+};
+
+
+
+export { renderForecast };

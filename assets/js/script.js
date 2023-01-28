@@ -1,13 +1,15 @@
 
 // Imports
 import { cities } from "./cities.js";
-import { fetchForecast } from "./forecastdata.js";
+import { renderForecast } from "./forecastdata.js";
 
 
 
-$(function () { // Document ready
-    // 
-    fetchForecast();
+$(function () { // Document ready   
+
+
+    // Fetch Weather 
+    renderForecast();
 
     // Function to get items from local storage
     const getFromLocalStorage = (name) => {
@@ -40,7 +42,9 @@ $(function () { // Document ready
     // Gets value from search box when enter key pressed
     $("#citySearch").keypress(function (event) {
         if (event.keyCode === 13) {
-            console.log($("#citySearch").val().trim());
+            // Clear display before updating
+            $('#weatherData').html('');
+            renderForecast($("#citySearch").val().trim());
         }
     });
     // Gets value from search box when search button clicked
@@ -48,7 +52,7 @@ $(function () { // Document ready
         // Clear display before updating
         $('#weatherData').html('');
         // Get forcast
-        fetchForecast($('#citySearch').val());
+        renderForecast($('#citySearch').val().trim());
         //console.log($("#citySearch").val());
         addToLocalStorage('recent', $("#citySearch").val().trim());
         // Clear search box
