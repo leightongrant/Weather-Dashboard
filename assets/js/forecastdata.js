@@ -58,17 +58,14 @@ const getForecast = (lat, lon, cityName, appid = '9270527dd2d838bcebaf2aaf5a875c
                     $('#todayWind').html(`Wind:  ${fiveDayForecast[day].wind} KPH`);
                     $('#todayHumidity').html(`Humidity:  ${fiveDayForecast[day].humidity} %`);
                     $('#todayDate').text(fiveDayForecast[day].date);
-                    // $('#todayDate').text(moment(fiveDayForecast[day].date).format('ddd Do MMM, YYYY'));
-
                 } else {
                     // Create elements to display data
                     let elements = '';
                     elements = `<div class="col">`;
                     elements += `<div class="p-3 border bg-light rounded-3 state-${fiveDayForecast[day].icon}">`;
                     elements += `<p class="date fs-6 fw-bold">${fiveDayForecast[day].date}</p>`;
-                    // elements += `<p class="date fs-6 fw-bold">${moment(fiveDayForecast[day].date).format('ddd Do MMM, YYYY')}</p>`;
                     elements += `<ul class="weatherData">`;
-                    // elements += `<li><img src="http://openweathermap.org/img/w/${day.icon}.png" "alt="Weather icon"></li>`;
+                    //elements += `<li><img src="https://openweathermap.org/img/wn/${fiveDayForecast[day].icon}@2x.png" "alt="Weather icon"></li>`;
                     elements += `<li><i class='owi owi-4x owi-${fiveDayForecast[day].icon}'></i></li>`;
                     elements += `<li>Temp:  ${fiveDayForecast[day].temp} &deg;C</li>`;
                     elements += `<li>Wind:  ${fiveDayForecast[day].wind} KPH</li>`;
@@ -78,9 +75,6 @@ const getForecast = (lat, lon, cityName, appid = '9270527dd2d838bcebaf2aaf5a875c
                     // Append elements to render forecast display
                     $(elements).appendTo($('#weatherData'));
                 }
-
-
-            //});
         })
         .catch(err => {
             alert(err);
