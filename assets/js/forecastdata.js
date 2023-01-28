@@ -7,7 +7,6 @@ const formatDate = (dt) => {
 const getForecast = (lat, lon, cityName, appid = '9270527dd2d838bcebaf2aaf5a875cff') => {
     let queryURL = `https://api.openweathermap.org/data/2.5/onecall?`;
     queryURL += `lat=${lat}&lon=${lon}&units=metric&exclude=current,minutely,hourly,alerts&appid=${appid}`;
-    console.log(queryURL);
     return fetch(queryURL)
         .then((response) => {
             if (response.status >= 200 && response.status <= 299) {
@@ -32,7 +31,6 @@ const getForecast = (lat, lon, cityName, appid = '9270527dd2d838bcebaf2aaf5a875c
                 dailyObj.date = formatDate(d.dt);
                 dailyObj.humidity = d.humidity;
                 dailyObj.temp = d.temp.day;
-                console.log(d.temp.day);
                 dailyObj.wind = d.wind_speed;
                 dailyObj.icon = d.weather[0].icon;
                 // Stringify objects and push to array
@@ -85,8 +83,7 @@ const getForecast = (lat, lon, cityName, appid = '9270527dd2d838bcebaf2aaf5a875c
             //});
         })
         .catch(err => {
-            console.log(err);
-            ($('.today')).html($(`<div class="col-12"><h2 class="">${city}: City not found</h2></div>`));
+            alert(err);
         });
 };
 
@@ -94,7 +91,6 @@ const getForecast = (lat, lon, cityName, appid = '9270527dd2d838bcebaf2aaf5a875c
 const renderForecast = (city = 'London', appid = 'e56b324652925293f54beb9630933db8') => {
     // Api call to get lat and lon data from city name
     let queryURL = `http://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(city)}&limit=5&appid=${appid}`;
-    console.log(queryURL);
     return fetch(queryURL)
         .then((response) => {
             if (response.status >= 200 && response.status <= 299) {
@@ -113,7 +109,7 @@ const renderForecast = (city = 'London', appid = 'e56b324652925293f54beb9630933d
             getForecast(lat, lon, cityName, appid);
 
         })
-        .catch(err => console.log(err));
+        .catch(err => alert(err));
 
 };
 
