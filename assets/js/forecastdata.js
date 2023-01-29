@@ -24,14 +24,21 @@ const addToLocalStorage = (name, item) => {
     }
 };
 
+const addRecent = (search) => {
+    let button = `<button type="button" class="btn btn-secondary d-flex justify-content-between">${search}<span
+        class="fa fa-times"></span></button>`;
+    $(button).appendTo('#history');
+};
+
 const renderRecentSearches = () => {
     // Call getFromLocalStorage function to get recent searches
     const recent = getFromLocalStorage('recentSearches');
+    let button = '';
     recent.forEach(search => {
-        let button = `<button type="button" class="btn btn-secondary d-flex justify-content-between">${search}<span
+        button += `<button type="button" class="btn btn-secondary d-flex justify-content-between">${search}<span
         class="fa fa-times"></span></button>`;
-        $(button).appendTo('#history');
     });
+    $(button).appendTo('#history');
 
 };
 
@@ -132,10 +139,13 @@ const renderForecast = (city = 'London', appid = 'e56b324652925293f54beb9630933d
             const lon = geo[0].lon;
             const cityName = `${geo[0].name}, ${geo[0].country}`;
 
+            // Call addRecent function to add recent searches
+            addRecent(cityName);
             // Call addToLocalStorage function with name and cityName
             addToLocalStorage('recentSearches', cityName);
             // Call getForecast function with lat, lon, and City Name data
             getForecast(lat, lon, cityName, appid);
+
 
         })
         .catch(err => alert(err));

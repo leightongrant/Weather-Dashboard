@@ -8,11 +8,10 @@ import { renderForecast, renderRecentSearches } from "./forecastdata.js";
 $(function () { // Document ready   
 
 
-    // Fetch Weather 
+    // Render forecast 
     renderForecast();
+    // Call renderRecentSearches function to render buttons
     renderRecentSearches();
-
-
 
 
     // Adds autocomplete to search box
