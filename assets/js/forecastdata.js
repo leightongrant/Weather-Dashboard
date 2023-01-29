@@ -3,6 +3,39 @@ const formatDate = (dt) => {
     return moment.unix(dt).format('MMM Do, YYYY');
 };
 
+// Function to get items from local storage
+const getFromLocalStorage = (name) => {
+    return JSON.parse(localStorage.getItem(name));
+};
+// Function to store items to local storage
+const addToLocalStorage = (name, item) => {
+    // Check if data already stored
+    let list = [];
+    if (getFromLocalStorage(name) !== null) {
+        list = getFromLocalStorage(name);
+    }
+    // Check if item is empty or already in storage
+    if (item.length === 0 || list.includes(item)) {
+        list = getFromLocalStorage(name);
+    } else {
+        // Add new items to array ans save to local storage
+        list.unshift(item);
+        localStorage.setItem(name, JSON.stringify(list));
+    }
+};
+
+const renderRecentSearches = () => {
+    // Call getFromLocalStorage function to get recent searches
+    const recent = getFromLocalStorage('recentSearches');
+    recent.forEach(search => {
+        let button = `<button type="button" class="btn btn-secondary d-flex justify-content-between">${search}<span
+        class="fa fa-times"></span></button>`;
+        $(button).appendTo('#history');
+    });
+
+};
+
+
 // Function to fetch forecast data
 const getForecast = (lat, lon, cityName, appid = '9270527dd2d838bcebaf2aaf5a875cff') => {
     let queryURL = `https://api.openweathermap.org/data/2.5/onecall?`;
@@ -99,7 +132,9 @@ const renderForecast = (city = 'London', appid = 'e56b324652925293f54beb9630933d
             const lon = geo[0].lon;
             const cityName = `${geo[0].name}, ${geo[0].country}`;
 
-            // Call getForecast with lat, lon, and City Name data
+            // Call addToLocalStorage function with name and cityName
+            addToLocalStorage('recentSearches', cityName);
+            // Call getForecast function with lat, lon, and City Name data
             getForecast(lat, lon, cityName, appid);
 
         })
@@ -109,4 +144,4 @@ const renderForecast = (city = 'London', appid = 'e56b324652925293f54beb9630933d
 
 
 
-export { renderForecast };
+export { renderForecast, renderRecentSearches };

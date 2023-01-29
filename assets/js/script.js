@@ -1,7 +1,7 @@
 
 // Imports
 import { cities } from "./cities.js";
-import { renderForecast } from "./forecastdata.js";
+import { renderForecast, renderRecentSearches } from "./forecastdata.js";
 
 
 
@@ -10,27 +10,7 @@ $(function () { // Document ready
 
     // Fetch Weather 
     renderForecast();
-
-    // Function to get items from local storage
-    const getFromLocalStorage = (name) => {
-        return JSON.parse(localStorage.getItem(name));
-    };
-    // Function to store items to local storage
-    const addToLocalStorage = (name, item) => {
-        // Check if data already stored
-        let list = [];
-        if (getFromLocalStorage(name) !== null) {
-            list = getFromLocalStorage(name);
-        }
-        // Check if item is empty or already in storage
-        if (item.length === 0 || list.includes(item)) {
-            list = getFromLocalStorage(name);
-        } else {
-            // Add new items to array ans save to local storage
-            list.unshift(item);
-            localStorage.setItem(name, JSON.stringify(list));
-        }
-    };
+    renderRecentSearches();
 
 
 
@@ -45,6 +25,8 @@ $(function () { // Document ready
             // Clear display before updating
             $('#weatherData').html('');
             renderForecast($("#citySearch").val().trim());
+            // Clear search box
+            $("#citySearch").val("");
         }
     });
     // Gets value from search box when search button clicked
@@ -53,8 +35,7 @@ $(function () { // Document ready
         $('#weatherData').html('');
         // Get forcast
         renderForecast($('#citySearch').val().trim());
-        //console.log($("#citySearch").val());
-        addToLocalStorage('recent', $("#citySearch").val().trim());
+
         // Clear search box
         $("#citySearch").val("");
     });
