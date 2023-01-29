@@ -1,3 +1,4 @@
+import { cities } from "./cities.js";
 // Function to format date
 const formatDate = (dt) => {
     return moment.unix(dt).format('MMM Do, YYYY');
@@ -178,9 +179,14 @@ const removeSearch = (search) => {
 };
 
 
+const getRandomCity = () => {
+    // Generate random number
+    let randNum = Math.floor(Math.random() * cities.length);
+    // Select a city
+    let randomCity = cities[randNum];
+    // Call renderForecast function
+    renderForecast(randomCity);
+};
 
-//removeSearch("New York County, US");
 
-
-
-export { renderForecast, renderRecentSearches, removeSearch };
+export { renderForecast, renderRecentSearches, removeSearch, getRandomCity };

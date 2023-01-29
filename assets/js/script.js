@@ -54,8 +54,7 @@ $(function () { // Document ready
         location.reload();
     });
 
-
-
+    // Random city search
 
 
 
