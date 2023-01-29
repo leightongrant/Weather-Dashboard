@@ -6,6 +6,21 @@ ul {
     padding-left: 0
 }
 
+.remove {
+    background: white;
+    color: darkgrey;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    font-size: 14px;
+}
+
+.remove:hover {
+    color: darkred;
+    cursor: default;
+}
+
+
 /* JQuery-UI overrides
 ----------------------------------*/
 .ui-widget {

@@ -45,7 +45,7 @@ const renderRecentSearches = () => {
         // Loop through recent and render all buttons except default search
         for (let i = 0; i < recent.length - 1; i++) {
             button += `<button type="button" class="btn btn-secondary d-flex justify-content-between">${recent[i]}<span
-        class="fa fa-times"></span></button>`;
+        class="fa fa-times remove"></span></button>`;
         }
 
         $(button).appendTo('#history');
@@ -183,4 +183,4 @@ const removeSearch = (search) => {
 
 
 
-export { renderForecast, renderRecentSearches, getFromLocalStorage };
+export { renderForecast, renderRecentSearches, removeSearch };

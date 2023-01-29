@@ -1,7 +1,7 @@
 
 // Imports
 import { cities } from "./cities.js";
-import { renderForecast, renderRecentSearches, getFromLocalStorage } from "./forecastdata.js";
+import { renderForecast, renderRecentSearches, removeSearch } from "./forecastdata.js";
 
 
 
@@ -18,6 +18,7 @@ $(function () { // Document ready
     $("#citySearch").autocomplete({
         source: cities
     });
+
     // Gets value from search box when enter key pressed
     $("#citySearch").keypress(function (event) {
         if (event.keyCode === 13) {
@@ -27,6 +28,7 @@ $(function () { // Document ready
             $("#citySearch").val("");
         }
     });
+
     // Gets value from search box when search button clicked
     $("#searchButton").on('click', function () {
 
@@ -37,15 +39,20 @@ $(function () { // Document ready
         $("#citySearch").val("");
     });
 
+    // Adds search to recent searches
     $('#history').on('click', (event) => {
         let thisSearch = $(event.target).text();
         renderForecast(thisSearch);
     });
 
-
-
-
-
+    // Removes search
+    $('.remove').on('click', (event) => {
+        event.stopPropagation();
+        let thisSearch = $(event.target).parent().text();
+        // Call remove search function
+        removeSearch(thisSearch);
+        location.reload();
+    });
 
 
 
