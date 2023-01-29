@@ -1,7 +1,7 @@
 
 // Imports
 import { cities } from "./cities.js";
-import { renderForecast, renderRecentSearches, removeSearch } from "./forecastdata.js";
+import { renderForecast, renderRecentSearches, removeSearch } from "./logic.js";
 
 
 
