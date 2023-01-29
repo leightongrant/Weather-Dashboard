@@ -18,11 +18,12 @@ const addToLocalStorage = (name, item) => {
     if (item.length === 0 || list.includes(item)) {
         list = getFromLocalStorage(name);
     } else {
-        // Add new items to array ans save to local storage
+        // Add new items to array and save to local storage
         list.unshift(item);
         localStorage.setItem(name, JSON.stringify(list));
     }
 };
+
 
 // Add buttons expect default search
 let searchCount = 0;
@@ -165,6 +166,21 @@ const renderForecast = (city = 'London', appid = 'e56b324652925293f54beb9630933d
 
 };
 
+const removeSearch = (search) => {
+    // Get recent searches from localstorage
+    const recentSearches = getFromLocalStorage('recentSearches');
+    // Find index of search
+    const index = recentSearches.indexOf(search);
+    // Remove Item from array
+    recentSearches.splice(index, 1);
+    localStorage.setItem('recentSearches', JSON.stringify(recentSearches));
+
+};
 
 
-export { renderForecast, renderRecentSearches };
+
+//removeSearch("New York County, US");
+
+
+
+export { renderForecast, renderRecentSearches, getFromLocalStorage };

@@ -1,7 +1,7 @@
 
 // Imports
 import { cities } from "./cities.js";
-import { renderForecast, renderRecentSearches } from "./forecastdata.js";
+import { renderForecast, renderRecentSearches, getFromLocalStorage } from "./forecastdata.js";
 
 
 
@@ -9,7 +9,7 @@ $(function () { // Document ready
 
 
     // Render forecast 
-    renderForecast();
+    //renderForecast();
     // Call renderRecentSearches function to render buttons
     renderRecentSearches();
 
@@ -41,6 +41,8 @@ $(function () { // Document ready
         let thisSearch = $(event.target).text();
         renderForecast(thisSearch);
     });
+
+
 
 
 
