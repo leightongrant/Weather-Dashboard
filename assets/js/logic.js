@@ -114,7 +114,7 @@ const getForecast = (lat, lon, cityName, appid = '9270527dd2d838bcebaf2aaf5a875c
                     // Create elements to display data
                     let elements = '';
                     elements = `<div class="col">`;
-                    elements += `<div class="p-3 border bg-light rounded-3 state-${fiveDayForecast[day].icon}">`;
+                    elements += `<div class="p-3 border bg-light rounded-3 h-100 state-${fiveDayForecast[day].icon}">`;
                     elements += `<p class="date fs-6 fw-bold">${fiveDayForecast[day].date}</p>`;
                     elements += `<ul class="weatherData">`;
                     //elements += `<li><img src="https://openweathermap.org/img/wn/${fiveDayForecast[day].icon}@2x.png" "alt="Weather icon"></li>`;

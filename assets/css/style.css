@@ -20,6 +20,14 @@ ul {
     cursor: default;
 }
 
+main {
+    background: lightsteelblue;
+    padding-bottom: 50px;
+    margin: 50px 50px;
+    border-radius: 7px;
+
+}
+
 
 /* JQuery-UI overrides
 ----------------------------------*/
