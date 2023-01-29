@@ -32,7 +32,7 @@ const addRecent = (search) => {
     if (searchCount > 0 && getFromLocalStorage('recentSearches').includes(search) === false) {
 
         let button = `<button type="button" class="btn btn-secondary d-flex justify-content-between">${search}<span
-        class="fa fa-times"></span></button>`;
+        class="fa fa-times remove"></span></button>`;
         $(button).appendTo('#history');
     }
     searchCount++;

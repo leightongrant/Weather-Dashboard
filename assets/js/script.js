@@ -1,7 +1,7 @@
 
 // Imports
 import { cities } from "./cities.js";
-import { renderForecast, renderRecentSearches, removeSearch } from "./logic.js";
+import { renderForecast, renderRecentSearches, removeSearch, getRandomCity } from "./logic.js";
 
 
 
@@ -9,7 +9,7 @@ $(function () { // Document ready
 
 
     // Render forecast 
-    //renderForecast();
+    renderForecast();
     // Call renderRecentSearches function to render buttons
     renderRecentSearches();
 
@@ -55,10 +55,7 @@ $(function () { // Document ready
     });
 
     // Random city search
-
-
-
-
+    $('#randomCity').on('click', () => getRandomCity());
 
 
 }); // Document ready
