@@ -27,7 +27,8 @@ const addToLocalStorage = (name, item) => {
 // Add buttons expect default search
 let searchCount = 0;
 const addRecent = (search) => {
-    if (searchCount > 0) {
+    if (searchCount > 0 && getFromLocalStorage('recentSearches').includes(search) === false) {
+
         let button = `<button type="button" class="btn btn-secondary d-flex justify-content-between">${search}<span
         class="fa fa-times"></span></button>`;
         $(button).appendTo('#history');
@@ -147,6 +148,9 @@ const renderForecast = (city = 'London', appid = 'e56b324652925293f54beb9630933d
             const lat = geo[0].lat;
             const lon = geo[0].lon;
             const cityName = `${geo[0].name}, ${geo[0].country}`;
+
+            // Clear display before updating
+            $('#weatherData').html('');
 
             // Call addRecent function to add recent searches
             addRecent(cityName);

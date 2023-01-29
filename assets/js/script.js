@@ -21,8 +21,7 @@ $(function () { // Document ready
     // Gets value from search box when enter key pressed
     $("#citySearch").keypress(function (event) {
         if (event.keyCode === 13) {
-            // Clear display before updating
-            $('#weatherData').html('');
+            // Render Forecast
             renderForecast($("#citySearch").val().trim());
             // Clear search box
             $("#citySearch").val("");
@@ -30,16 +29,18 @@ $(function () { // Document ready
     });
     // Gets value from search box when search button clicked
     $("#searchButton").on('click', function () {
-        // Clear display before updating
-        $('#weatherData').html('');
-        // Get forcast
+
+        // Render forcast
         renderForecast($('#citySearch').val().trim());
 
         // Clear search box
         $("#citySearch").val("");
     });
 
-
+    $('#history').on('click', (event) => {
+        let thisSearch = $(event.target).text();
+        renderForecast(thisSearch);
+    });
 
 
 
