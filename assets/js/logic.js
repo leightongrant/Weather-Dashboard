@@ -137,7 +137,7 @@ const getForecast = (lat, lon, cityName, appid = '9270527dd2d838bcebaf2aaf5a875c
 // Function to get coordinates
 const renderForecast = (city = 'London', appid = 'e56b324652925293f54beb9630933db8') => {
     // Api call to get lat and lon data from city name
-    let queryURL = `http://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(city)}&limit=5&appid=${appid}`;
+    let queryURL = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(city)}&limit=5&appid=${appid}`;
     return fetch(queryURL)
         .then((response) => {
             if (response.status >= 200 && response.status <= 299) {
