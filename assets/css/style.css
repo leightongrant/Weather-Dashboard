@@ -28,7 +28,7 @@ button {
 
 
 .state-04d {
-    background: url('../images/broken-clouds.png');
+    background: url('../images/broken-clouds.jpg');
 }
 
 .state-10d {
@@ -70,6 +70,10 @@ button {
 
 .show {
     display: block;
+}
+
+.bg-blue {
+    background-color: #003060;
 }
 
 /* JQuery-UI overrides
