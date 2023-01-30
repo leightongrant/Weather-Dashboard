@@ -20,14 +20,52 @@ ul {
     cursor: default;
 }
 
-main {
-    background: lightsteelblue;
+/* main-inner {
     padding-bottom: 50px;
     margin: 50px 50px;
     border-radius: 7px;
+    
 
+} */
+
+
+
+.state-04d {
+    background: url('../images/broken-clouds.png');
 }
 
+.state-10d {
+    background: url('../images/rainy.jpg');
+}
+
+.state-02d {
+    background: url('../images/scattered-clouds.jpg');
+}
+
+.state-03d {
+    background: url('../images/few-clouds.jpg');
+}
+
+.state-13d {
+    background: url('../images/snow.jpg');
+}
+
+.state-01d {
+    background: url('../images/sunshine.jpg');
+}
+
+
+.state-04d,
+.state-10d,
+.state-02d,
+.state-03d,
+.state-13d,
+.state-01d {
+    background-size: cover;
+    background-position: center;
+    font-weight: bold;
+    color: #212122;
+}
 
 /* JQuery-UI overrides
 ----------------------------------*/
