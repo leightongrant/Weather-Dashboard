@@ -129,7 +129,8 @@ const getForecast = (lat, lon, cityName, appid = '9270527dd2d838bcebaf2aaf5a875c
                 }
         })
         .catch(err => {
-            alert(err);
+            alertMessage();
+
         });
 };
 
@@ -163,7 +164,10 @@ const renderForecast = (city = 'London', appid = 'e56b324652925293f54beb9630933d
 
 
         })
-        .catch(err => alert(err));
+        .catch(err => {
+            alertMessage();
+
+        });
 
 };
 
@@ -186,6 +190,15 @@ const getRandomCity = () => {
     let randomCity = cities[randNum];
     // Call renderForecast function
     renderForecast(randomCity);
+};
+
+const alertMessage = () => {
+
+    $('.errInfo').text(`No weather data found!`).fadeIn(1000, function () {
+        $(this).addClass('show').delay(2000).fadeOut(2000, function () {
+            $(this).removeClass('show');
+        });
+    });
 };
 
 

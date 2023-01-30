@@ -67,6 +67,14 @@ ul {
     color: #212122;
 }
 
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
 /* JQuery-UI overrides
 ----------------------------------*/
 .ui-widget {
