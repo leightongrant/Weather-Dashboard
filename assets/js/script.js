@@ -65,6 +65,7 @@ $(function () { // Document ready
 
     // Search by location
     $('#getLocation').on('click', () => {
+        $('#weatherData').html('');
         locate();
     });
 
