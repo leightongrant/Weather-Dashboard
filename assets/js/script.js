@@ -1,7 +1,7 @@
 
 // Imports
 import { cities } from "./cities.js";
-import { renderForecast, renderRecentSearches, removeSearch, getRandomCity } from "./logic.js";
+import { renderForecast, renderRecentSearches, removeSearch, getRandomCity, locate } from "./logic.js";
 
 
 
@@ -43,12 +43,13 @@ $(function () { // Document ready
 
     // Adds search to recent searches
     $('#history').on('click', (event) => {
+        event.stopPropagation();
         let thisSearch = $(event.target).text();
         renderForecast(thisSearch);
     });
 
     // Removes search
-    $('.remove').on('click', (event) => {
+    $('#history').on('click', '.remove', (event) => {
         event.stopPropagation();
         let thisSearch = $(event.target).parent().text();
         // Call remove search function
@@ -57,10 +58,15 @@ $(function () { // Document ready
     });
 
     // Random city search
-    $('#randomCity').on('click', () => getRandomCity());
+    $('#randomCity').on('click', () => {
+        getRandomCity();
 
+    });
 
-    //$('.errInfo').addClass('show').text('hello');
+    // Search by location
+    $('#getLocation').on('click', () => {
+        locate();
+    });
 
 
 }); // Document ready

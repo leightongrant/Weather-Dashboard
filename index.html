@@ -42,12 +42,20 @@
                 <!-- <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa fa-search"></i></span> -->
                 <input type="text" class="form-control mb-3 rounded-pill" aria-label="Sizing example input"
                   aria-describedby="inputGroup-sizing-default" id="citySearch" placeholder="Search">
-                <div class="searchButtons d-flex justify-content-center">
-                  <button type="button" name="searchButton" class="btn btn-secondary btn-md btn-block m-1"
-                    id="searchButton"><i class="fa fa-search"></i> Search</button>
-                  <button type="button" name="randomCity" class="btn btn-secondary btn-md btn-block m-1"
-                    id="randomCity">Random
-                    City</button>
+                <div class="searchButtons d-flex justify-content-center flex-column">
+                  <div class="">
+                    <button type="button" name="searchButton"
+                      class="btn btn-secondary btn-md btn-block ml-0 mr-2 mb-2 d-block w-100" id="searchButton"><i
+                        class="fa fa-search"></i> Search</button>
+                  </div>
+                  <div class="d-flex">
+                    <button type="button" name="randomCity" class="btn btn-secondary btn-md btn-block m-1 d-block w-100"
+                      id="randomCity">Random
+                      City</button>
+                    <button type="button" name="getLocation"
+                      class="btn btn-secondary btn-md btn-block m-1 d-block w-100" id="getLocation">Get
+                      Location</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -105,7 +113,7 @@
             </div>
 
             <div class="container">
-              <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3" id="weatherData">
+              <div class="row row-cols-1 row-cols-lg-5 g-2 g-lg-3" id="weatherData">
               </div>
             </div>
           </section>

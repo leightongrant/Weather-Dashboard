@@ -27,14 +27,18 @@ const addToLocalStorage = (name, item) => {
     }
 };
 
-
-// Add buttons to recent searches
+// Add to recent search list
 const addRecent = (search) => {
-    const button = `<button type="button" class="btn btn-secondary d-flex justify-content-between">${search}<span
+    if (getFromLocalStorage('recentSearches') === null || getFromLocalStorage('recentSearches').includes(search) === false) {
+
+        let button = `<button type="button" class="btn btn-secondary d-flex justify-content-between">${search}<span
         class="fa fa-times remove"></span></button>`;
-    $(button).appendTo('#history');
+        $(button).appendTo('#history');
+    }
+
 };
 
+// Render recent from local storage
 const renderRecentSearches = () => {
     // Call getFromLocalStorage function to get recent searches
     const recent = getFromLocalStorage('recentSearches');
@@ -53,7 +57,7 @@ const renderRecentSearches = () => {
 
 
 // Function to fetch forecast data
-const getForecast = (lat, lon, cityName, appid = '9270527dd2d838bcebaf2aaf5a875cff') => {
+const getForecast = (lat, lon, cityName, appid = id1) => {
     let queryURL = `https://api.openweathermap.org/data/2.5/onecall?`;
     queryURL += `lat=${lat}&lon=${lon}&units=metric&exclude=current,minutely,hourly,alerts&appid=${appid}`;
     return fetch(queryURL)
@@ -131,8 +135,9 @@ const getForecast = (lat, lon, cityName, appid = '9270527dd2d838bcebaf2aaf5a875c
         });
 };
 
-// Function to get coordinates
-const renderForecast = (city = 'London', appid = id1) => {
+// If no city searched for or location not allowed, load weather for random city
+const randomChosenCity = cities[Math.floor(Math.random() * cities.length)];
+const renderForecast = (city = randomChosenCity, appid = id1) => {
     // Api call to get lat and lon data from city name
     let queryURL = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(city)}&limit=5&appid=${appid}`;
     return fetch(queryURL)
@@ -168,12 +173,14 @@ const renderForecast = (city = 'London', appid = id1) => {
 
 };
 
-
+// Get user location
 const locate = () => {
     const geoLocation = navigator.geolocation.getCurrentPosition((position) => {
         const lat = Math.fround(position.coords.latitude);
         const lon = Math.fround(position.coords.longitude);
         const appid = id1;
+
+        console.log(geoLocation);
         // Api call to get city name from lat and lon data
         let queryURL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=${appid}`;
         fetch(queryURL)
@@ -189,12 +196,15 @@ const locate = () => {
                 getForecast(lat, lon, cityName, appid);
 
             }).catch(err => {
-                console.log(err);
                 alertMessage();
             });
+    }, error => {
+        renderForecast();
+        //console.error(error);
     });
 };
 
+// Remove recent search
 const removeSearch = (search) => {
     // Get recent searches from localstorage
     const recentSearches = getFromLocalStorage('recentSearches');
@@ -213,9 +223,12 @@ const getRandomCity = () => {
     // Select a city
     let randomCity = cities[randNum];
     // Call renderForecast function
+    //alert(randomCity);
     renderForecast(randomCity);
+
 };
 
+// Message alerts
 const alertMessage = () => {
 
     $('.errInfo').text(`No weather data found!`).fadeIn(1000, function () {
@@ -226,4 +239,4 @@ const alertMessage = () => {
 };
 
 
-export { renderForecast, renderRecentSearches, removeSearch, getRandomCity };
+export { renderForecast, renderRecentSearches, removeSearch, getRandomCity, locate };
