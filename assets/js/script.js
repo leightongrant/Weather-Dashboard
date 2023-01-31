@@ -7,11 +7,15 @@ import { renderForecast, renderRecentSearches, removeSearch, getRandomCity, loca
 
 $(function () { // Document ready 
 
-    // Get weather if location confirmed
     if (navigator.geolocation) {
         locate();
+    } else {
+        renderForecast();
     }
 
+    //locate();
+    // Render forecast 
+    //
     // Call renderRecentSearches function to render buttons
     renderRecentSearches();
 
@@ -58,5 +62,9 @@ $(function () { // Document ready
 
     // Random city search
     $('#randomCity').on('click', () => getRandomCity());
+
+
+    //$('.errInfo').addClass('show').text('hello');
+
 
 }); // Document ready
