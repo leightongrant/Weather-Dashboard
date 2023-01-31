@@ -172,7 +172,7 @@ const renderForecast = (city = 'London', appid = 'e56b324652925293f54beb9630933d
 
 };
 
-
+// Function to check user location
 const locate = () => {
     const geoLocation = navigator.geolocation.getCurrentPosition((position) => {
         const lat = Math.fround(position.coords.latitude);
@@ -199,6 +199,7 @@ const locate = () => {
     });
 };
 
+// Function to remove search
 const removeSearch = (search) => {
     // Get recent searches from localstorage
     const recentSearches = getFromLocalStorage('recentSearches');
@@ -210,7 +211,7 @@ const removeSearch = (search) => {
 
 };
 
-
+// Function to get random city
 const getRandomCity = () => {
     // Generate random number
     let randNum = Math.floor(Math.random() * cities.length);
@@ -220,6 +221,7 @@ const getRandomCity = () => {
     renderForecast(randomCity);
 };
 
+// Function to alert user
 const alertMessage = () => {
 
     $('.errInfo').text(`No weather data found!`).fadeIn(1000, function () {
