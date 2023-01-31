@@ -1,4 +1,6 @@
 import { cities } from "./cities.js";
+import { id1 } from "./ids.js";
+
 // Function to format date
 const formatDate = (dt) => {
     return moment.unix(dt).format('MMM Do, YYYY');
@@ -131,7 +133,7 @@ const getForecast = (lat, lon, cityName, appid) => {
 };
 
 // Function to get coordinates
-const renderForecast = (city = 'London', appid = 'e56b324652925293f54beb9630933db8') => {
+const renderForecast = (city = 'London', appid = id1) => {
     // Api call to get lat and lon data from city name
     let queryURL = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(city)}&limit=5&appid=${appid}`;
     return fetch(queryURL)
@@ -172,7 +174,7 @@ const locate = () => {
     const geoLocation = navigator.geolocation.getCurrentPosition((position) => {
         const lat = Math.fround(position.coords.latitude);
         const lon = Math.fround(position.coords.longitude);
-        const appid = '069b4c21c711a2c22195ab2cd33572fc';
+        const appid = id1;
         // Api call to get city name from lat and lon data
         let queryURL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=${appid}`;
         fetch(queryURL)
