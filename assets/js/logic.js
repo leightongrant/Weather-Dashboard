@@ -26,16 +26,11 @@ const addToLocalStorage = (name, item) => {
 };
 
 
-// Add buttons expect default search
-let searchCount = 0;
+// Add buttons to recent searches
 const addRecent = (search) => {
-    if (searchCount > 0 && getFromLocalStorage('recentSearches').includes(search) === false) {
-
-        let button = `<button type="button" class="btn btn-secondary d-flex justify-content-between">${search}<span
+    const button = `<button type="button" class="btn btn-secondary d-flex justify-content-between">${search}<span
         class="fa fa-times remove"></span></button>`;
-        $(button).appendTo('#history');
-    }
-    searchCount++;
+    $(button).appendTo('#history');
 };
 
 const renderRecentSearches = () => {
@@ -43,8 +38,8 @@ const renderRecentSearches = () => {
     const recent = getFromLocalStorage('recentSearches');
     if (recent !== null) {
         let button = '';
-        // Loop through recent and render all buttons except default search
-        for (let i = 0; i < recent.length - 1; i++) {
+        // Loop through recent and render all buttons
+        for (let i = 0; i < recent.length; i++) {
             button += `<button type="button" class="btn btn-secondary d-flex justify-content-between">${recent[i]}<span
         class="fa fa-times remove"></span></button>`;
         }
