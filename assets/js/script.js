@@ -8,8 +8,10 @@ import { renderForecast, renderRecentSearches, removeSearch, getRandomCity } fro
 $(function () { // Document ready   
 
 
-    // Render forecast 
-    renderForecast();
+    if (navigator.geolocation) {
+        locate();
+    }
+
     // Call renderRecentSearches function to render buttons
     renderRecentSearches();
 
@@ -56,6 +58,9 @@ $(function () { // Document ready
 
     // Random city search
     $('#randomCity').on('click', () => getRandomCity());
+
+
+    //$('.errInfo').addClass('show').text('hello');
 
 
 }); // Document ready
