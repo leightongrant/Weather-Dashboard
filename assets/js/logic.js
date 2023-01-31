@@ -56,7 +56,8 @@ const renderRecentSearches = () => {
 
 
 // Function to fetch forecast data
-const getForecast = (lat, lon, cityName, appid = '9270527dd2d838bcebaf2aaf5a875cff') => {
+const getForecast = (lat, lon, cityName, appid) => {
+
     let queryURL = `https://api.openweathermap.org/data/2.5/onecall?`;
     queryURL += `lat=${lat}&lon=${lon}&units=metric&exclude=current,minutely,hourly,alerts&appid=${appid}`;
     return fetch(queryURL)
@@ -171,6 +172,33 @@ const renderForecast = (city = 'London', appid = 'e56b324652925293f54beb9630933d
 
 };
 
+
+const locate = () => {
+    const geoLocation = navigator.geolocation.getCurrentPosition((position) => {
+        const lat = Math.fround(position.coords.latitude);
+        const lon = Math.fround(position.coords.longitude);
+        const appid = '069b4c21c711a2c22195ab2cd33572fc';
+        // Api call to get city name from lat and lon data
+        let queryURL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=${appid}`;
+        fetch(queryURL)
+            .then((response) => {
+                if (response.status >= 200 && response.status <= 299) {
+                    return response.json();
+                } else {
+                    throw Error(response.statusText);
+                }
+            })
+            .then(data => {
+                let cityName = data[0].name + ', ' + data[0].country;
+                getForecast(lat, lon, cityName, appid);
+
+            }).catch(err => {
+                console.log(err);
+                alertMessage();
+            });
+    });
+};
+
 const removeSearch = (search) => {
     // Get recent searches from localstorage
     const recentSearches = getFromLocalStorage('recentSearches');
@@ -202,4 +230,6 @@ const alertMessage = () => {
 };
 
 
-export { renderForecast, renderRecentSearches, removeSearch, getRandomCity };
+
+
+export { renderForecast, renderRecentSearches, removeSearch, getRandomCity, locate };
