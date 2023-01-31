@@ -1,21 +1,15 @@
 
 // Imports
 import { cities } from "./cities.js";
-import { renderForecast, renderRecentSearches, removeSearch, getRandomCity, locate } from "./logic.js";
+import { renderForecast, renderRecentSearches, removeSearch, getRandomCity } from "./logic.js";
 
 
 
-$(function () { // Document ready 
+$(function () { // Document ready   
 
-    if (navigator.geolocation) {
-        locate();
-    } else {
-        renderForecast();
-    }
 
-    //locate();
     // Render forecast 
-    //
+    renderForecast();
     // Call renderRecentSearches function to render buttons
     renderRecentSearches();
 
@@ -62,9 +56,6 @@ $(function () { // Document ready
 
     // Random city search
     $('#randomCity').on('click', () => getRandomCity());
-
-
-    //$('.errInfo').addClass('show').text('hello');
 
 
 }); // Document ready

@@ -53,8 +53,7 @@ const renderRecentSearches = () => {
 
 
 // Function to fetch forecast data
-const getForecast = (lat, lon, cityName, appid) => {
-
+const getForecast = (lat, lon, cityName, appid = '9270527dd2d838bcebaf2aaf5a875cff') => {
     let queryURL = `https://api.openweathermap.org/data/2.5/onecall?`;
     queryURL += `lat=${lat}&lon=${lon}&units=metric&exclude=current,minutely,hourly,alerts&appid=${appid}`;
     return fetch(queryURL)
@@ -169,6 +168,7 @@ const renderForecast = (city = 'London', appid = id1) => {
 
 };
 
+<<<<<<< HEAD
 
 const locate = () => {
     const geoLocation = navigator.geolocation.getCurrentPosition((position) => {
@@ -196,6 +196,8 @@ const locate = () => {
     });
 };
 
+=======
+>>>>>>> parent of 12128f8... adds function to check location
 const removeSearch = (search) => {
     // Get recent searches from localstorage
     const recentSearches = getFromLocalStorage('recentSearches');
@@ -227,6 +229,4 @@ const alertMessage = () => {
 };
 
 
-
-
-export { renderForecast, renderRecentSearches, removeSearch, getRandomCity, locate };
+export { renderForecast, renderRecentSearches, removeSearch, getRandomCity };
