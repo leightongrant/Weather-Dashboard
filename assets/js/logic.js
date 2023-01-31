@@ -168,7 +168,6 @@ const renderForecast = (city = 'London', appid = id1) => {
 
 };
 
-<<<<<<< HEAD
 
 const locate = () => {
     const geoLocation = navigator.geolocation.getCurrentPosition((position) => {
@@ -196,8 +195,6 @@ const locate = () => {
     });
 };
 
-=======
->>>>>>> parent of 12128f8... adds function to check location
 const removeSearch = (search) => {
     // Get recent searches from localstorage
     const recentSearches = getFromLocalStorage('recentSearches');
