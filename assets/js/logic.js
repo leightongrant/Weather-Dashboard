@@ -126,7 +126,8 @@ const getForecast = (lat, lon, cityName, appid = id1) => {
                     elements += `</ul></div></div>`;
 
                     // Append elements to render forecast display
-                    $(elements).appendTo($('#weatherData'));
+                    $('#weatherData').append(elements);
+                    // $(elements).appendTo($('#weatherData'));
                 }
         })
         .catch(err => {
