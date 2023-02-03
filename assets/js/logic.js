@@ -180,7 +180,7 @@ const locate = () => {
         const lon = Math.fround(position.coords.longitude);
         const appid = id1;
 
-        console.log(geoLocation);
+
         // Api call to get city name from lat and lon data
         let queryURL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=${appid}`;
         fetch(queryURL)
@@ -200,7 +200,7 @@ const locate = () => {
             });
     }, error => {
         renderForecast();
-        //console.error(error);
+
     });
 };
 
