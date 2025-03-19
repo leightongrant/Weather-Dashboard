@@ -1,5 +1,6 @@
 import { cities } from './cities.js'
 const id = '9270527dd2d838bcebaf2aaf5a875cff'
+import { placeholder } from './placeholders.js'
 
 const addRecent = search => {
 	if (JSON.parse(localStorage.getItem('recentSearches')) === null) return
@@ -113,12 +114,14 @@ const renderForecast = async (city = randomChosenCity) => {
 
 // Get user location
 const locate = async () => {
+	$('#weatherData').html(placeholder)
 	navigator.geolocation.getCurrentPosition(position => {
 		const lat = Math.fround(position.coords.latitude)
 		const lon = Math.fround(position.coords.longitude)
 		if (!lat || !lon) {
 			throw new Error('Location not found')
 		}
+		$('#weatherData').html('')
 		getForecast(lat, lon)
 	})
 }
