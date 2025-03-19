@@ -88,7 +88,9 @@ const renderForecast = async (city = randomChosenCity) => {
 	)}&limit=6&appid=${id}`
 	const response = await fetch(url)
 	const data = await response.json()
-
+	if (data.length === 0) {
+		throw new Error('City not found')
+	}
 	const { lat, lon, country, name } = data[0]
 	const cityName = `${name}, ${country}`
 
