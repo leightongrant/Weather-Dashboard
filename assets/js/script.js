@@ -1,73 +1,55 @@
+import { cities } from './cities.js'
+import {
+	renderForecast,
+	renderRecentSearches,
+	removeSearch,
+	getRandomCity,
+	locate,
+} from './logic.js'
 
-// Imports
-import { cities } from "./cities.js";
-import { renderForecast, renderRecentSearches, removeSearch, getRandomCity, locate } from "./logic.js";
+$(function () {
+	if (navigator.geolocation) {
+		locate()
+	}
+	renderRecentSearches()
 
+	$('#citySearch').autocomplete({
+		source: cities,
+	})
 
+	$('#citySearch').keypress(function (event) {
+		if (event.keyCode === 13) {
+			renderForecast($('#citySearch').val().trim())
+			$('#citySearch').val('')
+		}
+	})
 
-$(function () { // Document ready   
+	$('#searchButton').on('click', function () {
+		renderForecast($('#citySearch').val().trim())
 
+		$('#citySearch').val('')
+	})
 
-    if (navigator.geolocation) {
-        locate();
-    }
+	$('#history').on('click', event => {
+		event.stopPropagation()
+		let thisSearch = $(event.target).text()
+		renderForecast(thisSearch)
+	})
 
-    // Call renderRecentSearches function to render buttons
-    renderRecentSearches();
+	$('#history').on('click', '.remove', event => {
+		event.stopPropagation()
+		let thisSearch = $(event.target).parent().text()
 
+		removeSearch(thisSearch)
+		location.reload()
+	})
 
-    // Adds autocomplete to search box
-    $("#citySearch").autocomplete({
-        source: cities
-    });
+	$('#randomCity').on('click', () => {
+		getRandomCity()
+	})
 
-    // Gets value from search box when enter key pressed
-    $("#citySearch").keypress(function (event) {
-        if (event.keyCode === 13) {
-            // Render Forecast
-            renderForecast($("#citySearch").val().trim());
-            // Clear search box
-            $("#citySearch").val("");
-        }
-    });
-
-    // Gets value from search box when search button clicked
-    $("#searchButton").on('click', function () {
-
-        // Render forcast
-        renderForecast($('#citySearch').val().trim());
-
-        // Clear search box
-        $("#citySearch").val("");
-    });
-
-    // Adds search to recent searches
-    $('#history').on('click', (event) => {
-        event.stopPropagation();
-        let thisSearch = $(event.target).text();
-        renderForecast(thisSearch);
-    });
-
-    // Removes search
-    $('#history').on('click', '.remove', (event) => {
-        event.stopPropagation();
-        let thisSearch = $(event.target).parent().text();
-        // Call remove search function
-        removeSearch(thisSearch);
-        location.reload();
-    });
-
-    // Random city search
-    $('#randomCity').on('click', () => {
-        getRandomCity();
-
-    });
-
-    // Search by location
-    $('#getLocation').on('click', () => {
-        $('#weatherData').html('');
-        locate();
-    });
-
-
-}); // Document ready
+	$('#getLocation').on('click', () => {
+		$('#weatherData').html('')
+		locate()
+	})
+})

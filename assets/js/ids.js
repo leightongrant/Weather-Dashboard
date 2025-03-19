@@ -1,3 +1,1 @@
-const id1 = 'e56b324652925293f54beb9630933db8';
-
-export { id1 };
+export const id = '9270527dd2d838bcebaf2aaf5a875cff'
