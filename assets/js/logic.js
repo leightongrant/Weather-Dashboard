@@ -104,7 +104,9 @@ const renderForecast = async (city = randomChosenCity) => {
 	if (!history) {
 		localStorage.setItem('recentSearches', JSON.stringify([cityName]))
 	} else {
-		history.push(cityName)
+		if (!history.includes(cityName)) {
+			history.push(cityName)
+		}
 		localStorage.setItem('recentSearches', JSON.stringify(history))
 	}
 }
